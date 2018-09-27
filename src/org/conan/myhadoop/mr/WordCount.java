@@ -79,12 +79,12 @@ public class WordCount {
 
     public static void main(String[] args) throws Exception {
         //数据输入路径     这里的路径需要换成自己的hadoop所在地址
-    	String input = "hdfs://centos:9000/words.txt";
+    	String input = "hdfs://hdp-nn-01:9000/words.txt";
         /**
          * 输出路径设置为HDFS的根目录下的out文件夹下
          * 注意：该文件夹不应该存在，否则出错
          */
-        String output = "hdfs://centos:9000/out";
+        String output = "hdfs://hdp-nn-01:9000/out";
 
         JobConf conf = new JobConf(WordCount.class);
         conf.setJobName("WordCount");
@@ -124,9 +124,12 @@ public class WordCount {
          */
         conf.setOutputFormat(TextOutputFormat.class);
         //设置输入数据文件路径
-        FileInputFormat.setInputPaths(conf, new Path(input));
-        //设置输出数据文件路径（该路径不能存在，否则异常）
-        FileOutputFormat.setOutputPath(conf, new Path(output));
+//        FileInputFormat.setInputPaths(conf, new Path(input));
+//        //设置输出数据文件路径（该路径不能存在，否则异常）
+//        FileOutputFormat.setOutputPath(conf, new Path(output));
+        
+    	FileInputFormat.addInputPath(conf, new Path(args[0]));
+		FileOutputFormat.setOutputPath(conf, new Path(args[1]));
         //启动mapreduce
         JobClient.runJob(conf);
         System.exit(0);

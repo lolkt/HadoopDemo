@@ -68,11 +68,17 @@ public class KPIIP {
     }
 
     public static void main(String[] args) throws Exception {
-        String input = "hdfs://centos:9000/access.log.10";
-        String output = "hdfs://centos:9000/out_kpiip";
+        String input = "hdfs://hdp-nn-01:9000/access";
+        String output = "hdfs://hdp-nn-01:9000/out_kpiip";
 
         JobConf conf = new JobConf(KPIIP.class);
         conf.setJobName("KPIIP");
+        conf.set("mapreduce.app-submission.cross-platform", "true");
+        conf.set("fs.defalutFS","hdfs://hdp-nn-01:9000/");
+        conf.set("mapreduce.framework.name", "yarn");  
+        conf.set("yarn.resourcemanager.hostname", "hdp-nn-01");  
+//        conf.set("yarn.resourcemanager.address", "192.168.1.200:8032");  
+        
 //        conf.addResource("classpath:/hadoop/core-site.xml");
 //        conf.addResource("classpath:/hadoop/hdfs-site.xml");
 //        conf.addResource("classpath:/hadoop/mapred-site.xml");

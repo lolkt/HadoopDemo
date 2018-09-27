@@ -4,7 +4,7 @@ Hadoop简单应用案例，包括MapReduce、单词统计、HDFS基本操作、w
 ------------------------------
 ### 运行环境：  
 java 1.8  
-hadoop1.1.2  
+hadoop2.6.5  
 zookeeper3.4.5  
 采用伪分布模式下eclipse工具进行开发的java project。    
   

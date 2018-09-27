@@ -8,7 +8,7 @@ import org.apache.hadoop.mapred.JobConf;
 
 public class Recommend {
 
-    public static final String HDFS = "hdfs://centos:9000";
+    public static final String HDFS = "hdfs://hdp-nn-01:9000";
     /**
      * 指定分隔符，以tab键和逗号分隔符
      */
